@@ -1,4 +1,4 @@
-# Real-Time Chat Application — Backend
+# Real-Time Chat Application - Backend
 
 A production-style REST API and real-time chat backend built with Node.js, Express, MongoDB, Mongoose, JWT Authentication, Role-Based Authorization, and Socket.IO.
 
