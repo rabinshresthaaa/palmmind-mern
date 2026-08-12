@@ -259,9 +259,9 @@ const Chat: React.FC = () => {
                 return (
                   <div key={msg._id} className={clsx("flex items-end gap-1.5", isMe ? "justify-end" : "justify-start", topMargin)}>
 
-                    {/* Other user avatar - placeholder space to keep alignment */}
+                    {/* Avatar — always reserves width; self-end so it sits at the bubble bottom */}
                     {!isMe && (
-                      <div className="w-6 h-6 shrink-0 mb-0.5">
+                      <div className="w-6 h-6 shrink-0 self-end">
                         {showAvatar ? (
                           <div className="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center">
                             <span className="text-[10px] font-bold text-gray-600">
@@ -276,7 +276,8 @@ const Chat: React.FC = () => {
                       {showName && (
                         <span className="text-[11px] text-gray-400 font-medium mb-1 px-1">{msg.sender.name}</span>
                       )}
-                      <div className="group relative">
+                      {/* Relative wrapper so timestamp floats below without affecting flex height */}
+                      <div className="relative group">
                         <div
                           className={clsx(
                             "px-3.5 py-2 text-sm leading-relaxed whitespace-pre-wrap break-words",
@@ -301,8 +302,8 @@ const Chat: React.FC = () => {
                         </div>
                         {isLastInCluster && (
                           <span className={clsx(
-                            "text-[10px] text-gray-400 mt-0.5 block opacity-0 group-hover:opacity-100 transition-opacity",
-                            isMe ? "text-right" : "text-left pl-1"
+                            "absolute top-full mt-0.5 text-[10px] text-gray-400 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity",
+                            isMe ? "right-0" : "left-0"
                           )}>
                             {new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                           </span>
