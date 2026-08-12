@@ -18,3 +18,16 @@ connectDB();
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+const gracefulShutdown = () => {
+  console.log("Shutting down server...");
+
+  server.close(() => {
+    console.log("HTTP server closed");
+    process.exit(0);
+  });
+};
+
+
+process.on("SIGTERM", gracefulShutdown);
+process.on("SIGINT", gracefulShutdown);
