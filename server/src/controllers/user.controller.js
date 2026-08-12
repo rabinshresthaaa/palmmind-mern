@@ -10,10 +10,18 @@ const createUser = async (req, res, next) => {
       password,
     });
 
+    const userResponse = {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      createdAt: user.createdAt,
+    };
+
     res.status(201).json({
       success: true,
       message: "User created successfully",
-      data: user,
+      data: userResponse,
     });
   } catch (error) {
     next(error);
