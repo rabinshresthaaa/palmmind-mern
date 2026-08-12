@@ -22,7 +22,7 @@ router.get(
 );
 
 
-// Admin: get all users
+// Admin only: get all users
 router.get(
   "/",
   protect,
@@ -31,7 +31,7 @@ router.get(
 );
 
 
-// Admin: get specific user
+// Admin only: get specific user
 router.get(
   "/:id",
   protect,
@@ -49,7 +49,7 @@ router.put(
 );
 
 
-// Admin can delete users
+// Admin only: delete users
 router.delete(
   "/:id",
   protect,
