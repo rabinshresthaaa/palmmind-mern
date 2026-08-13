@@ -56,7 +56,6 @@ const UsersManager: React.FC = () => {
 
   const saveEdit = async (id: string) => {
     try {
-      const res = await api.put(`/users/${id}`, editForm);
       setUsers(users.map(u => u._id === id ? { ...u, name: editForm.name, email: editForm.email } : u));
       setEditingId(null);
     } catch (err: any) {
