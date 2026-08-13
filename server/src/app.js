@@ -8,6 +8,8 @@ const errorHandler = require("./middleware/error.middleware");
 
 const app = express();
 
+app.set("trust proxy", 1);
+
 // Apply security middleware
 app.use(helmet());
 app.use(
